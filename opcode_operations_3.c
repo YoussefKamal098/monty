@@ -123,7 +123,10 @@ void pstr(stack_t **stack, unsigned int line_number)
 		_exit_prog(EXIT_FAILURE);
 
 	if (*stack == NULL)
+	{
 		putchar('\n');
+		return;
+	}
 
 	curr = *stack;
 
