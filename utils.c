@@ -27,3 +27,32 @@ bool is_integer(char *str)
 
 	return (true);
 }
+
+/**
+ * create_stack_node - Create a new node for the stack
+ * @n: Integer value to be stored in the new node
+ *
+ * This function creates a new node for the stack, initializes its values,
+ * and returns a pointer to the created node. If memory allocation fails, it
+ * prints an error message and exits the program.
+ *
+ * Return: Pointer to the newly created stack node.
+ */
+stack_t *create_stack_node(int n)
+{
+	stack_t *node;
+
+	node = (stack_t *)malloc(sizeof(stack_t));
+
+	if (node == NULL)
+	{
+		print_error(EMALLOC_FAILED);
+		_exit_prog(EXIT_FAILURE);
+	}
+
+	node->next = NULL;
+	node->prev = NULL;
+	node->n = n;
+
+	return (node);
+}

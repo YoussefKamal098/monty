@@ -1,5 +1,8 @@
 #include "monty.h"
 
+void stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
+
 /**
  * execute_opcode - Execute Monty opcode based on opcode information
  * @info: Pointer to an opcode_info_t struct containing opcode information
@@ -20,34 +23,68 @@ void execute_opcode(opcode_info_t *info)
 {
 	static instruction_t instructions[] = {
 	    {"push", push},
-	    {"pall", print_stack},
+	    {"pall", pall},
+	    {"pint", pint},
+	    {"stack", stack},
+	    {"queue", queue},
 	    {NULL, NULL}};
 	size_t i;
 
 	if (info == NULL || data == NULL)
 		_exit_prog(EXIT_FAILURE);
 
-	if (strcmp(info->code, "stack") == 0)
-	{
-		data->push_mode = STACK_MODE;
-		return;
-	}
-
-	if (strcmp(info->code, "queue") == 0)
-	{
-		data->push_mode = QUEUE_MODE;
-		return;
-	}
-
 	for (i = 0; instructions[i].opcode; i++)
 	{
 		if (strcmp(info->code, instructions[i].opcode) == 0)
 		{
-			instructions[i].f(&data->stack_head, info->line);
+			if (instructions[i].f)
+				instructions[i].f(&data->stack_head, info->line);
 			return;
 		}
 	}
 
-	print_error(EUNKOWN_INSTRUCTION, info->line, info->code);
+	print_error(EUNKOWN_INSTRUCTION, info->code, info->line);
 	_exit_prog(EXIT_FAILURE);
+}
+
+/**
+ * stack - Set the push mode to stack (LIFO)
+ * @stack: Pointer to the head of the stack
+ * @line_number: Line number of the 'stack' instruction in Monty bytecode
+ *
+ * This function sets the push mode to stack (Last-In, First-Out) in Monty.
+ * It is typically called when encountering the 'stack' instruction in Monty
+ * bytecode, indicating that subsequent 'push' instructions should push
+ * elements onto the stack.
+ */
+void stack(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+
+	if (data == NULL)
+		_exit_prog(EXIT_FAILURE);
+
+	data->push_mode = STACK_MODE;
+}
+
+/**
+ * queue - Set the push mode to queue (FIFO)
+ * @stack: Pointer to the head of the stack
+ * @line_number: Line number of the 'queue' instruction in Monty bytecode
+ *
+ * This function sets the push mode to queue (First-In, First-Out) in Monty.
+ * It is typically called when encountering the 'queue' instruction in Monty
+ * bytecode, indicating that subsequent 'push' instructions should push
+ * elements onto the queue.
+ */
+void queue(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+
+	if (data == NULL)
+		_exit_prog(EXIT_FAILURE);
+
+	data->push_mode = QUEUE_MODE;
 }

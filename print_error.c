@@ -13,11 +13,13 @@
 void print_error(int error_code, ...)
 {
 	static error_handler_t error_handler[] = {
-	    {EMONTY_FILE, monty_file_error},
-	    {EOPEN_FILE, cannot_open_file_error},
-	    {EUNKOWN_INSTRUCTION, unknown_instruction_error},
-	    {EMALLOC_FAILED, malloc_error},
-	    {EPUSH_INTEGER, push_integer_error},
+	    {EMONTY_FILE, print_monty_file_error},
+	    {EOPEN_FILE, print_cannot_open_file_error},
+	    {EUNKOWN_INSTRUCTION, print_unknown_instruction_error},
+	    {EMALLOC_FAILED, print_malloc_error},
+	    {EPUSH_INTEGER, print_push_integer_error},
+	    {ESTACK_EMPTY, print_stack_empty_error},
+	    {ESTACK_TOO_SHORT, print_stack_too_short_error},
 	    {0, NULL},
 	};
 	size_t i;

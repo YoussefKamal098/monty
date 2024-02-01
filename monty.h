@@ -95,16 +95,12 @@ void execute_opcode(opcode_info_t *info);
 
 /*utils.c*/
 bool is_integer(char *str);
+stack_t *create_stack_node(int n);
 
-/* push.c */
+/* opcode_operations.c */
 void push(stack_t **stack, unsigned int line_number);
-
-/* stack_operations.c */
-void print_stack(stack_t **stack, unsigned int line_number);
-void push_stack(stack_t **head, stack_t *new_node);
-
-/* queue_operations.c */
-void push_queue(stack_t **head, stack_t *new_node);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
 
 /* free.c */
 void free_stack(stack_t *head);

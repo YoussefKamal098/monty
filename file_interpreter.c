@@ -57,7 +57,7 @@ void interpret_file(const FILE *file)
 
 void tokenize_line(char *buffer, opcode_info_t *info)
 {
-	const char *delim = "\n ";
+	const char *delim = " \r\t\n";
 
 	if (buffer == NULL || info == NULL)
 		_exit_prog(EXIT_FAILURE);
