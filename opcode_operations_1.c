@@ -1,8 +1,5 @@
 #include "monty.h"
 
-void push_stack(stack_t **head, stack_t *new_node);
-void push_queue(stack_t **head, stack_t *new_node);
-
 /**
  * push - Push an element onto the stack or queue
  * @stack: A double pointer to the head of the stack (or queue)
@@ -14,7 +11,7 @@ void push_queue(stack_t **head, stack_t *new_node);
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *node;
+	int n;
 	char *first_opcode_token;
 
 	if (stack == NULL || data == NULL || data->opcode_info == NULL)
@@ -34,12 +31,12 @@ void push(stack_t **stack, unsigned int line_number)
 		_exit_prog(EXIT_FAILURE);
 	}
 
-	node = create_stack_node(atoi(first_opcode_token));
+	n = atoi(first_opcode_token);
 
 	if (data->push_mode == STACK_MODE)
-		push_stack(stack, node);
+		push_stack(stack, n);
 	else
-		push_queue(stack, node);
+		push_queue(stack, n);
 }
 
 /**
@@ -98,16 +95,17 @@ void pint(stack_t **stack, unsigned int line_number)
 /**
  * push_stack - Push a new node onto the stack
  * @head: A double pointer to the head of the stack
- * @new_node: Pointer to the new node to be pushed onto the stack
+ * @n: The integer value to be added to the new node.
  *
  * This function pushes a new node onto the stack. If the stack is empty,
  * the new node becomes the head of the stack. If the stack is not empty,
  * the new node is inserted at the top of the stack, and its next and
  * previous pointers are updated accordingly.
  */
-void push_stack(stack_t **head, stack_t *new_node)
+void push_stack(stack_t **head, int n)
 {
 	stack_t *tmp;
+	stack_t *new_node = create_double_linked_list_node(n);
 
 	if (head == NULL || new_node == NULL)
 		_exit_prog(EXIT_FAILURE);
@@ -127,16 +125,17 @@ void push_stack(stack_t **head, stack_t *new_node)
 /**
  * push_queue - Push a new node onto the queue
  * @head: A double pointer to the front of the queue
- * @new_node: Pointer to the new node to be pushed onto the queue
+ * @n: The integer value to be added to the new node.
  *
  * This function pushes a new node onto the queue. If the queue is empty,
  * the new node becomes the head of the queue. If the queue is not empty,
  * the new node is inserted at the end of the queue, and its next and
  * previous pointers are updated accordingly.
  */
-void push_queue(stack_t **head, stack_t *new_node)
+void push_queue(stack_t **head, int n)
 {
 	stack_t *tmp;
+	stack_t *new_node = create_double_linked_list_node(n);
 
 	if (head == NULL || new_node == NULL)
 		_exit_prog(EXIT_FAILURE);

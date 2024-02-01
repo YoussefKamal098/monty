@@ -29,7 +29,7 @@ bool is_integer(char *str)
 }
 
 /**
- * create_stack_node - Create a new node for the stack
+ * create_double_linked_list_node - Create a new node for the stack
  * @n: Integer value to be stored in the new node
  *
  * This function creates a new node for the stack, initializes its values,
@@ -38,7 +38,7 @@ bool is_integer(char *str)
  *
  * Return: Pointer to the newly created stack node.
  */
-stack_t *create_stack_node(int n)
+stack_t *create_double_linked_list_node(int n)
 {
 	stack_t *node;
 

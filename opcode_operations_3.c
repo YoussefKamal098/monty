@@ -142,3 +142,30 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	putchar('\n');
 }
+
+/**
+ * rotl - Rotate the stack to the top.
+ * @stack: A double pointer to the head of the stack.
+ * @line_number: The line number in the Monty bytecode file where
+ * the rotl operation is called. (not used in this function)
+ *
+ * This function rotates the stack to the top by moving the top element to
+ * the bottom. It uses a double-linked list as the stack.
+ */
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	int tmp;
+
+	(void)line_number;
+
+	if (stack == NULL)
+		_exit_prog(EXIT_FAILURE);
+
+	if (*stack == NULL || (*stack)->next == NULL)
+		return;
+
+	tmp = (*stack)->n;
+
+	pop(stack, line_number);
+	push_queue(stack, tmp);
+}
