@@ -9,8 +9,7 @@
  * standard error stream (stderr) indicating the correct usage of the
  * Monty interpreter.
  *
- * Return: The number of characters printed (excluding the null byte),
- * or a negative value if an error occurs during printing.
+ * Return: The number of bytes written to stderr or -1 on failure.
  */
 int print_monty_file_error(va_list args)
 {
@@ -28,8 +27,7 @@ int print_monty_file_error(va_list args)
  * the file path as a variable argument and prints an error message to the
  * standard error stream (stderr).
  *
- * Return: The number of characters printed (excluding the null byte),
- * or a negative value if an error occurs during printing.
+ * Return: The number of bytes written to stderr or -1 on failure.
  */
 int print_cannot_open_file_error(va_list args)
 {
@@ -54,20 +52,19 @@ int print_cannot_open_file_error(va_list args)
  * It takes variable arguments including the line number and opcode, and prints
  * an error message to the standard error stream (stderr).
  *
- * Return: The number of characters printed (excluding the null byte),
- * or a negative value if an error occurs during printing.
+ * Return: The number of bytes written to stderr or -1 on failure.
  */
 int print_unknown_instruction_error(va_list args)
 {
 	char *opcode = va_arg(args, char *);
-	int opcode_line_number = va_arg(args, int);
+	unsigned int opcode_line_number = va_arg(args, unsigned int);
 	int written_bytes;
 
 	if (opcode == NULL)
 		return (-1);
 
 	written_bytes = fprintf(stderr,
-				"L%d: unknown instruction %s\n", opcode_line_number, opcode);
+				"L%u: unknown instruction %s\n", opcode_line_number, opcode);
 
 	return (written_bytes);
 }
@@ -80,8 +77,7 @@ int print_unknown_instruction_error(va_list args)
  * interpreter encounters a memory allocation failure (malloc). It prints an
  * error message to the standard error stream (stderr).
  *
- * Return: The number of characters printed (excluding the null byte),
- * or a negative value if an error occurs during printing.
+ * Return: The number of bytes written to stderr or -1 on failure.
  */
 int print_malloc_error(va_list args)
 {
@@ -98,15 +94,14 @@ int print_malloc_error(va_list args)
  * the stack. It takes variable arguments including the line number and prints
  * a usage message to the standard error stream (stderr).
  *
- * Return: The number of characters printed (excluding the null byte),
- * or a negative value if an error occurs during printing.
+ * Return: The number of bytes written to stderr or -1 on failure.
  */
 int print_push_integer_error(va_list args)
 {
-	int opcode_line_number = va_arg(args, int);
+	unsigned int opcode_line_number = va_arg(args, unsigned int);
 	int written_bytes;
 
-	written_bytes = fprintf(stderr, "L%d: usage: push integer\n",
+	written_bytes = fprintf(stderr, "L%u: usage: push integer\n",
 				opcode_line_number);
 
 	return (written_bytes);

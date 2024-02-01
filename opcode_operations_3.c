@@ -3,7 +3,7 @@
 /**
  * mul - Multiplies the top element by the second element of the stack.
  *
- * @stack: A pointer to the top of the stack.
+ * @stack: A double pointer to the head of the stack.
  * @line_number: The line number in the Monty bytecode file where
  * the mul operation is called.
  *
@@ -35,7 +35,7 @@ void mul(stack_t **stack, unsigned int line_number)
  * mod - Computes the modulus of the second element by
  * the top element of the stack.
  *
- * @stack: A pointer to the top of the stack.
+ * @stack: A double pointer to the head of the stack.
  * @line_number: The line number in the Monty bytecode file where
  * the mod operation is called.
  *
@@ -68,4 +68,36 @@ void mod(stack_t **stack, unsigned int line_number)
 
 	second_top->n = second_top->n % first_top->n;
 	pop(stack, line_number);
+}
+
+/**
+ * pchar - Print the ASCII character equivalent of the top element
+ * of the stack.
+ *
+ * @stack: A double pointer to the head of the stack.
+ * @line_number: The line number in the Monty bytecode file where
+ * the pchar operation is called.
+ *
+ * This function prints the ASCII character equivalent of the top element of
+ * the stack. It expects a non-empty stack and checks if the top element is
+ * within the ASCII range before printing the character to the standard output.
+ */
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	if (stack == NULL)
+		_exit_prog(EXIT_FAILURE);
+
+	if (*stack == NULL)
+	{
+		print_error(ESTACK_EMPTY, "pchar", line_number);
+		_exit_prog(EXIT_FAILURE);
+	}
+
+	if (!isascii((*stack)->n))
+	{
+		print_error(ERANGE, "pchar", line_number);
+		_exit_prog(EXIT_FAILURE);
+	}
+
+	printf("%c\n", (*stack)->n);
 }

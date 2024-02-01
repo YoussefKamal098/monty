@@ -11,6 +11,7 @@
 #define ESTACK_EMPTY 305
 #define ESTACK_TOO_SHORT 306
 #define EZERO_DIVISION 307
+#define ERANGE 308
 
 /**
  * struct error_handler_s - error handler for error messages
@@ -37,5 +38,6 @@ int print_push_integer_error(va_list args);
 int print_stack_empty_error(va_list args);
 int print_stack_too_short_error(va_list args);
 int print_zero_division_error(va_list args);
+int print_range_error(va_list args);
 
 #endif /* _ERROR_H_ */

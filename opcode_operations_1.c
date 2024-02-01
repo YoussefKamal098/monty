@@ -5,7 +5,7 @@ void push_queue(stack_t **head, stack_t *new_node);
 
 /**
  * push - Push an element onto the stack or queue
- * @stack: Pointer to the head of the stack (or queue)
+ * @stack: A double pointer to the head of the stack (or queue)
  * @line_number: Line number indicating the source line in the Monty file
  *
  * This function pushes an element onto the stack or queue based on the current
@@ -44,7 +44,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 /**
  * pall - Print the elements of a stack
- * @stack: Pointer to the head of the stack
+ * @stack: A double pointer to the head of the stack.
  * @line_number: Line number (not used in this function)
  *
  * This function prints the elements of a
@@ -72,7 +72,7 @@ void pall(stack_t **stack, unsigned int line_number)
 
 /**
  * pint - Print the top element of the stack
- * @stack: Pointer to the head of the stack
+ * @stack: A double pointer to the head of the stack.
  * @line_number: Line number of the 'pint' instruction in Monty bytecode
  *
  * This function prints the top element of the stack. If the stack is empty,
@@ -97,7 +97,7 @@ void pint(stack_t **stack, unsigned int line_number)
 
 /**
  * push_stack - Push a new node onto the stack
- * @head: Pointer to the head of the stack
+ * @head: A double pointer to the head of the stack
  * @new_node: Pointer to the new node to be pushed onto the stack
  *
  * This function pushes a new node onto the stack. If the stack is empty,
@@ -126,7 +126,7 @@ void push_stack(stack_t **head, stack_t *new_node)
 
 /**
  * push_queue - Push a new node onto the queue
- * @head: Pointer to the head of the queue
+ * @head: A double pointer to the front of the queue
  * @new_node: Pointer to the new node to be pushed onto the queue
  *
  * This function pushes a new node onto the queue. If the queue is empty,

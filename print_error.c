@@ -21,6 +21,7 @@ void print_error(int error_code, ...)
 	    {ESTACK_EMPTY, print_stack_empty_error},
 	    {ESTACK_TOO_SHORT, print_stack_too_short_error},
 	    {EZERO_DIVISION, print_zero_division_error},
+	    {ERANGE, print_range_error},
 	    {0, NULL},
 	};
 	size_t i;

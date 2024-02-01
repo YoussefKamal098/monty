@@ -2,7 +2,7 @@
 
 /**
  * pop - Removes the top element from the stack.
- * @stack: A pointer to the top of the stack.
+ * @stack: A double pointer to the head of the stack.
  * @line_number: The line number in the Monty bytecode file where
  * the pop operation is called.
  *
@@ -36,7 +36,7 @@ void pop(stack_t **stack, unsigned int line_number)
 }
 /**
  * swap - Swaps the top two elements of the stack.
- * @stack: A pointer to the top of the stack.
+ * @stack: A double pointer to the head of the stack.
  * @line_number: The line number in the Monty bytecode file where the
  * swap operation is called.
  *
@@ -68,7 +68,7 @@ void swap(stack_t **stack, unsigned int line_number)
 /**
  * add - Adds the top two elements of the stack.
  *
- * @stack: A pointer to the top of the stack.
+ * @stack: A double pointer to the head of the stack.
  * @line_number: The line number in the Monty bytecode file where the
  * add operation is called.
  *
@@ -98,7 +98,7 @@ void add(stack_t **stack, unsigned int line_number)
 /**
  * sub - Subtracts the top element from the second element of the stack.
  *
- * @stack: A pointer to the top of the stack.
+ * @stack: A double pointer to the head of the stack.
  * @line_number: The line number in the Monty bytecode file where the
  * sub operation is called.
  *
@@ -127,7 +127,7 @@ void sub(stack_t **stack, unsigned int line_number)
 
 /**
  * _div - Divides the second element by the top element of the stack.
- * @stack: A pointer to the top of the stack.
+ * @stack: A double pointer to the head of the stack.
  * @line_number: The line number in the Monty bytecode file where
  * the div operation is called.
  *

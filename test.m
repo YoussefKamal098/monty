@@ -1,4 +1,4 @@
 push 1
-pall
-swap
-pall
+pchar
+push 878
+pchar
