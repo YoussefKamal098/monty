@@ -20,8 +20,12 @@ int print_stack_empty_error(va_list args)
 	if (opcode == NULL)
 		return (-1);
 
-	written_bytes = fprintf(stderr, "L%d: can't %s, stack empty\n",
-				opcode_line_number, opcode);
+	if (strcmp(opcode, "pop") == 0)
+		written_bytes = fprintf(stderr, "L%d: can't %s an empty stack\n",
+					opcode_line_number, opcode);
+	else
+		written_bytes = fprintf(stderr, "L%d: can't %s, stack empty\n",
+					opcode_line_number, opcode);
 
 	return (written_bytes);
 }
