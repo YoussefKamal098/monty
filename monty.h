@@ -93,14 +93,18 @@ void interpret_file(const FILE *file);
 /* execute_opcode.c */
 void execute_opcode(opcode_info_t *info);
 
-/*is_integer.c*/
+/*utils.c*/
 bool is_integer(char *str);
 
-/* push_stack.c */
+/* push.c */
 void push(stack_t **stack, unsigned int line_number);
 
-/* print_stack.c */
+/* stack_operations.c */
 void print_stack(stack_t **stack, unsigned int line_number);
+void push_stack(stack_t **head, stack_t *new_node);
+
+/* queue_operations.c */
+void push_queue(stack_t **head, stack_t *new_node);
 
 /* free.c */
 void free_stack(stack_t *head);
