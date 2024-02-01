@@ -26,6 +26,11 @@ void execute_opcode(opcode_info_t *info)
 	    {"pall", pall},
 	    {"pint", pint},
 	    {"pop", pop},
+	    {"swap", swap},
+	    {"add", add},
+	    {"nop", NULL},
+	    {"sub", sub},
+	    {"div", _div},
 	    {"stack", stack},
 	    {"queue", queue},
 	    {NULL, NULL}};

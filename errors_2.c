@@ -54,3 +54,24 @@ int print_stack_too_short_error(va_list args)
 
 	return (written_bytes);
 }
+
+/**
+ * print_zero_division_error - Prints a zero division error message to stderr.
+ * @args: A variable argument list containing additional parameters.
+ *
+ * This function is responsible for printing a
+ * zero division error message to the standard error stream (stderr).
+ * It extracts the opcode line number from the variable argument list
+ * and constructs the error message accordingly.
+ *
+ * Return: Number of characters written (or a negative value on failure).
+ */
+int print_zero_division_error(va_list args)
+{
+	int opcode_line_number = va_arg(args, int);
+	int written_bytes;
+
+	written_bytes = fprintf(stderr, "%d: division by zero", opcode_line_number);
+
+	return (written_bytes);
+}
