@@ -36,6 +36,7 @@ void execute_opcode(opcode_info_t *info)
 	    {"pchar", pchar},
 	    {"pstr", pstr},
 	    {"rotl", rotl},
+	    {"rotr", rotr},
 	    {"stack", stack},
 	    {"queue", queue},
 	    {NULL, NULL}};
