@@ -97,10 +97,13 @@ void execute_opcode(opcode_info_t *info);
 bool is_integer(char *str);
 stack_t *create_stack_node(int n);
 
-/* opcode_operations.c */
+/* opcode_operations_1.c */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+
+/* opcode_operations_2.c */
+void pop(stack_t **stack, unsigned int line_number);
 
 /* free.c */
 void free_stack(stack_t *head);

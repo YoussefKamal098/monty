@@ -33,8 +33,11 @@ int print_monty_file_error(va_list args)
  */
 int print_cannot_open_file_error(va_list args)
 {
-	int written_bytes;
 	char *file_path = va_arg(args, char *);
+	int written_bytes;
+
+	if (file_path == NULL)
+		return (-1);
 
 	written_bytes = fprintf(stderr, "Error: Can't open file %s\n", file_path);
 
@@ -59,6 +62,9 @@ int print_unknown_instruction_error(va_list args)
 	char *opcode = va_arg(args, char *);
 	int opcode_line_number = va_arg(args, int);
 	int written_bytes;
+
+	if (opcode == NULL)
+		return (-1);
 
 	written_bytes = fprintf(stderr,
 				"L%d: unknown instruction %s\n", opcode_line_number, opcode);

@@ -17,6 +17,9 @@ int print_stack_empty_error(va_list args)
 	int opcode_line_number = va_arg(args, int);
 	int written_bytes;
 
+	if (opcode == NULL)
+		return (-1);
+
 	written_bytes = fprintf(stderr, "L%d: can't %s, stack empty\n",
 				opcode_line_number, opcode);
 
@@ -38,6 +41,9 @@ int print_stack_too_short_error(va_list args)
 	char *opcode = va_arg(args, char *);
 	int opcode_line_number = va_arg(args, int);
 	int written_bytes;
+
+	if (opcode == NULL)
+		return (-1);
 
 	written_bytes = fprintf(stderr, "%d: can't %s, stack too short",
 				opcode_line_number, opcode);
