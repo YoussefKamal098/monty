@@ -49,7 +49,7 @@ int print_stack_too_short_error(va_list args)
 	if (opcode == NULL)
 		return (-1);
 
-	written_bytes = fprintf(stderr, "L%d: can't %s, stack too short",
+	written_bytes = fprintf(stderr, "L%d: can't %s, stack too short\n",
 				opcode_line_number, opcode);
 
 	return (written_bytes);
@@ -71,7 +71,7 @@ int print_zero_division_error(va_list args)
 	int opcode_line_number = va_arg(args, int);
 	int written_bytes;
 
-	written_bytes = fprintf(stderr, "L%d: division by zero", opcode_line_number);
+	written_bytes = fprintf(stderr, "L%d: division by zero\n", opcode_line_number);
 
 	return (written_bytes);
 }
