@@ -41,6 +41,9 @@ void execute_opcode(opcode_info_t *info)
 	if (info == NULL || data == NULL)
 		_exit_prog(EXIT_FAILURE);
 
+	if (info.opcode && info.opcode[0] == '#')
+		return;
+
 	for (i = 0; instructions[i].opcode; i++)
 	{
 		if (strcmp(info->code, instructions[i].opcode) == 0)
