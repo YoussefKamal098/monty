@@ -101,3 +101,41 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	printf("%c\n", (*stack)->n);
 }
+
+/**
+ * pstr - Print the string contained in the stack, starting from the top.
+ *
+ * @stack: A double pointer to the head of the stack.
+ * @line_number: The line number in the Monty bytecode file where
+ * the pstr operation is called. (not used in this function)
+ *
+ * This function prints the string contained in the stack, starting from the
+ * top. It expects a non-empty stack and prints characters one by one until it
+ * reaches a null byte (0) or encounters a non-ASCII character.
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *curr;
+
+	(void)line_number;
+
+	if (stack == NULL)
+		_exit_prog(EXIT_FAILURE);
+
+	if (*stack == NULL)
+		putchar('\n');
+
+	curr = *stack;
+
+	while (curr)
+	{
+		if (curr->n == 0)
+			break;
+		if (!isascii((curr)->n))
+			break;
+		putchar(curr->n);
+		curr = curr->next;
+	}
+
+	putchar('\n');
+}
