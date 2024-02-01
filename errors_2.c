@@ -71,7 +71,8 @@ int print_zero_division_error(va_list args)
 	int opcode_line_number = va_arg(args, int);
 	int written_bytes;
 
-	written_bytes = fprintf(stderr, "L%d: division by zero\n", opcode_line_number);
+	written_bytes = fprintf(stderr, "L%d: division by zero\n",
+				opcode_line_number);
 
 	return (written_bytes);
 }

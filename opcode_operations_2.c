@@ -47,20 +47,22 @@ void pop(stack_t **stack, unsigned int line_number)
 
 void swap(stack_t **stack, unsigned int line_number)
 {
+	stack_t *first_top = *stack;
+	stack_t *second_top = first_top ? first_top->next : NULL;
 	int tmp;
 
 	if (stack == NULL)
 		_exit_prog(EXIT_FAILURE);
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (first_top == NULL || second_top == NULL)
 	{
 		print_error(ESTACK_TOO_SHORT, "swap", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
-	tmp = (*stack)->n;
-	(*stack)->n = (*stack)->next->n;
-	(*stack)->next->n = tmp;
+	tmp = first_top->n;
+	first_top->n = second_top->n;
+	second_top->n = tmp;
 }
 
 /**
