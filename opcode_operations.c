@@ -87,7 +87,7 @@ void pint(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 	{
-		print_error(ESTACK_EMPTY, line_number);
+		print_error(ESTACK_EMPTY, "pint", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
