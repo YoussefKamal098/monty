@@ -23,7 +23,7 @@ void mul(stack_t **stack, unsigned int line_number)
 
 	if (first_top == NULL || second_top == NULL)
 	{
-		print_error(ESTACK_TOO_SHORT, "div", line_number);
+		print_error(ESTACK_TOO_SHORT, "mul", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
@@ -56,7 +56,7 @@ void mod(stack_t **stack, unsigned int line_number)
 
 	if (first_top == NULL || second_top == NULL)
 	{
-		print_error(ESTACK_TOO_SHORT, "div", line_number);
+		print_error(ESTACK_TOO_SHORT, "mod", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
