@@ -109,6 +109,10 @@ void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 
+/* opcode_operations_3.c */
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+
 /* free.c */
 void free_stack(stack_t *head);
 void free_program_data(program_data_t *data);
