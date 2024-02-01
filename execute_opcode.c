@@ -41,7 +41,7 @@ void execute_opcode(opcode_info_t *info)
 	if (info == NULL || data == NULL)
 		_exit_prog(EXIT_FAILURE);
 
-	if (info.opcode && info.opcode[0] == '#')
+	if (info->code && info->code[0] == '#')
 		return;
 
 	for (i = 0; instructions[i].opcode; i++)
