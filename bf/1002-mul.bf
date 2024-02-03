@@ -1,7 +1,7 @@
-read two digit from user
+Read two digit from user
 >, >,
 
-atoi
+Atoi
 <<+++ +++
 [
  >--- --- --
@@ -9,19 +9,19 @@ atoi
  <<-
 ]
 
-multiply
-> [
+Multiply
+>[
  >[>+>+<<-]
  >[<+>-]
  <<-
 ]
 
-itoa
+Itoa
 >>+++ +++
 [
  >+++ +++ ++
  <-
 ]
 
-print result
+Print result
 >.

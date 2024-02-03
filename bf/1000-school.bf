@@ -1,4 +1,8 @@
-++++++++[>++++++++++<-]>+++. output S character
-<++++[>++++<-]>. output c character
-+++++.+++++++..---. output h o o l characters
-<++++++++++[>----------<-]>++.  output newline
+Print S character
++++ +++ ++[>+++ +++ +++ +<-]>+++. 
+Print c character
+<+++ +[>+++ +<-]>. 
+Print h o o l characters
++++ ++ . +++ +++ + . . --- . 
+Print newline
+<+++ +++ +++ +[>--- --- --- -<-]>++.  
