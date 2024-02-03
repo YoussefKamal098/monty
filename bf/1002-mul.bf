@@ -2,7 +2,7 @@ read two digit from user
 >, >,
 
 atoi
->>+++ +++
+<<+++ +++
 [
  >--- --- --
  >--- --- --
