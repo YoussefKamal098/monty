@@ -18,7 +18,7 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 	{
-		print_error(ESTACK_EMPTY, "pop", line_number);
+		print_error(E_STACK_EMPTY, "pop", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
@@ -47,22 +47,22 @@ void pop(stack_t **stack, unsigned int line_number)
 
 void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *first_top = *stack;
-	stack_t *second_top = first_top ? first_top->next : NULL;
+	stack_t *first_element = *stack;
+	stack_t *second_element = first_element ? first_element->next : NULL;
 	int tmp;
 
 	if (stack == NULL)
 		_exit_prog(EXIT_FAILURE);
 
-	if (first_top == NULL || second_top == NULL)
+	if (first_element == NULL || second_element == NULL)
 	{
-		print_error(ESTACK_TOO_SHORT, "swap", line_number);
+		print_error(E_STACK_TOO_SHORT, "swap", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
-	tmp = first_top->n;
-	first_top->n = second_top->n;
-	second_top->n = tmp;
+	tmp = first_element->n;
+	first_element->n = second_element->n;
+	second_element->n = tmp;
 }
 
 /**
@@ -79,19 +79,19 @@ void swap(stack_t **stack, unsigned int line_number)
  */
 void add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *first_top = *stack;
-	stack_t *second_top = first_top ? first_top->next : NULL;
+	stack_t *first_element = *stack;
+	stack_t *second_element = first_element ? first_element->next : NULL;
 
 	if (stack == NULL)
 		_exit_prog(EXIT_FAILURE);
 
-	if (first_top == NULL || second_top == NULL)
+	if (first_element == NULL || second_element == NULL)
 	{
-		print_error(ESTACK_TOO_SHORT, "add", line_number);
+		print_error(E_STACK_TOO_SHORT, "add", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
-	second_top->n = second_top->n + first_top->n;
+	second_element->n = second_element->n + first_element->n;
 	pop(stack, line_number);
 }
 
@@ -109,19 +109,19 @@ void add(stack_t **stack, unsigned int line_number)
  */
 void sub(stack_t **stack, unsigned int line_number)
 {
-	stack_t *first_top = *stack;
-	stack_t *second_top = first_top ? first_top->next : NULL;
+	stack_t *first_element = *stack;
+	stack_t *second_element = first_element ? first_element->next : NULL;
 
 	if (stack == NULL)
 		_exit_prog(EXIT_FAILURE);
 
-	if (first_top == NULL || second_top == NULL)
+	if (first_element == NULL || second_element == NULL)
 	{
-		print_error(ESTACK_TOO_SHORT, "sub", line_number);
+		print_error(E_STACK_TOO_SHORT, "sub", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
-	second_top->n = second_top->n - first_top->n;
+	second_element->n = second_element->n - first_element->n;
 	pop(stack, line_number);
 }
 
@@ -141,24 +141,24 @@ void sub(stack_t **stack, unsigned int line_number)
  */
 void _div(stack_t **stack, unsigned int line_number)
 {
-	stack_t *first_top = *stack;
-	stack_t *second_top = first_top ? first_top->next : NULL;
+	stack_t *first_element = *stack;
+	stack_t *second_element = first_element ? first_element->next : NULL;
 
 	if (stack == NULL)
 		_exit_prog(EXIT_FAILURE);
 
-	if (first_top == NULL || second_top == NULL)
+	if (first_element == NULL || second_element == NULL)
 	{
-		print_error(ESTACK_TOO_SHORT, "div", line_number);
+		print_error(E_STACK_TOO_SHORT, "div", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
-	if (first_top->n == 0)
+	if (first_element->n == 0)
 	{
-		print_error(EZERO_DIVISION, line_number);
+		print_error(E_ZERO_DIVISION, line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
-	second_top->n = second_top->n / first_top->n;
+	second_element->n = second_element->n / first_element->n;
 	pop(stack, line_number);
 }

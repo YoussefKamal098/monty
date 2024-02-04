@@ -12,7 +12,7 @@ void tokenize_line(char *buffer, opcode_info_t *info);
  * of the file is reached.
  */
 
-void interpret_file(const FILE *file)
+void interpret_file(FILE *file)
 {
 	char *buffer = NULL;
 	size_t read_bytes = 0;
@@ -23,11 +23,11 @@ void interpret_file(const FILE *file)
 
 	data->opcode_info = &opcode_info;
 
-	while (getline(&buffer, &read_bytes, (FILE *)file) != EOF)
+	while (getline(&buffer, &read_bytes, file) != EOF)
 	{
 		if (buffer == NULL)
 		{
-			print_error(EMALLOC_FAILED);
+			print_error(E_MALLOC_FAILED);
 			_exit_prog(EXIT_FAILURE);
 		}
 

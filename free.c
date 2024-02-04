@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * free_stack - Free memory allocated for a stack (doubly linked list)
+ * free_stack_t - Free memory allocated for a stack (doubly linked list)
  * @head: Pointer to the head of the stack (doubly linked list)
  *
  * This function is responsible for freeing the memory allocated for a stack,
@@ -9,14 +9,14 @@
  * parameter and iteratively traverses the stack, freeing each node until the
  * end is reached.
  */
-void free_stack(stack_t *head)
+void free_stack_t(stack_t *head)
 {
 	stack_t *tmp;
 
 	if (head == NULL)
 		return;
 
-	while (head != NULL)
+	while (head)
 	{
 		tmp = head;
 		head = head->next;
@@ -38,9 +38,9 @@ void free_program_data(program_data_t *data)
 		return;
 
 	if (data->stack_head)
-		free_stack(data->stack_head);
+		free_stack_t(data->stack_head);
 	if (data->buffer)
 		free(data->buffer);
-
-	fclose(data->file);
+	if (data->file && fclose(data->file))
+		perror("Error closing file");
 }

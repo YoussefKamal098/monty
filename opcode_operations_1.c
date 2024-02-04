@@ -21,19 +21,19 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (first_opcode_token == NULL)
 	{
-		print_error(EPUSH_INTEGER, line_number);
+		print_error(E_PUSH_INTEGER, line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
 	if (is_integer(first_opcode_token) == 0)
 	{
-		print_error(EPUSH_INTEGER, line_number);
+		print_error(E_PUSH_INTEGER, line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
 	n = atoi(first_opcode_token);
 
-	if (data->push_mode == STACK_MODE)
+	if (data->mode == STACK_MODE)
 		push_stack(stack, n);
 	else
 		push_queue(stack, n);
@@ -84,7 +84,7 @@ void pint(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 	{
-		print_error(ESTACK_EMPTY, "pint", line_number);
+		print_error(E_STACK_EMPTY, "pint", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
@@ -105,7 +105,10 @@ void pint(stack_t **stack, unsigned int line_number)
 void push_stack(stack_t **head, int n)
 {
 	stack_t *tmp;
-	stack_t *new_node = create_double_linked_list_node(n);
+	stack_t *new_node = create_stack_t_node(n);
+
+	if (new_node == NULL)
+		print_error(E_MALLOC_FAILED);
 
 	if (head == NULL || new_node == NULL)
 		_exit_prog(EXIT_FAILURE);
@@ -135,7 +138,10 @@ void push_stack(stack_t **head, int n)
 void push_queue(stack_t **head, int n)
 {
 	stack_t *tmp;
-	stack_t *new_node = create_double_linked_list_node(n);
+	stack_t *new_node = create_stack_t_node(n);
+
+	if (new_node == NULL)
+		print_error(E_MALLOC_FAILED);
 
 	if (head == NULL || new_node == NULL)
 		_exit_prog(EXIT_FAILURE);

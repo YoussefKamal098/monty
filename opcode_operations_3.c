@@ -15,19 +15,19 @@
  */
 void mul(stack_t **stack, unsigned int line_number)
 {
-	stack_t *first_top = *stack;
-	stack_t *second_top = first_top ? first_top->next : NULL;
+	stack_t *first_element = *stack;
+	stack_t *second_element = first_element ? first_element->next : NULL;
 
 	if (stack == NULL)
 		_exit_prog(EXIT_FAILURE);
 
-	if (first_top == NULL || second_top == NULL)
+	if (first_element == NULL || second_element == NULL)
 	{
-		print_error(ESTACK_TOO_SHORT, "mul", line_number);
+		print_error(E_STACK_TOO_SHORT, "mul", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
-	second_top->n = second_top->n * first_top->n;
+	second_element->n = second_element->n * first_element->n;
 	pop(stack, line_number);
 }
 
@@ -48,25 +48,25 @@ void mul(stack_t **stack, unsigned int line_number)
  */
 void mod(stack_t **stack, unsigned int line_number)
 {
-	stack_t *first_top = *stack;
-	stack_t *second_top = first_top ? first_top->next : NULL;
+	stack_t *first_element = *stack;
+	stack_t *second_element = first_element ? first_element->next : NULL;
 
 	if (stack == NULL)
 		_exit_prog(EXIT_FAILURE);
 
-	if (first_top == NULL || second_top == NULL)
+	if (first_element == NULL || second_element == NULL)
 	{
-		print_error(ESTACK_TOO_SHORT, "mod", line_number);
+		print_error(E_STACK_TOO_SHORT, "mod", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
-	if (first_top->n == 0)
+	if (first_element->n == 0)
 	{
-		print_error(EZERO_DIVISION, line_number);
+		print_error(E_ZERO_DIVISION, line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
-	second_top->n = second_top->n % first_top->n;
+	second_element->n = second_element->n % first_element->n;
 	pop(stack, line_number);
 }
 
@@ -89,13 +89,13 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 	{
-		print_error(ESTACK_EMPTY, "pchar", line_number);
+		print_error(E_STACK_EMPTY, "pchar", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 
 	if (!isascii((*stack)->n))
 	{
-		print_error(ERANGE, "pchar", line_number);
+		print_error(E_RANGE, "pchar", line_number);
 		_exit_prog(EXIT_FAILURE);
 	}
 

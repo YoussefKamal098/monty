@@ -1,20 +1,31 @@
-#ifndef _MONTY_H_
-#define _MONTY_H_
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <stdio.h>
-#include <malloc.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <stdarg.h>
 #include <string.h>
 #include <stdbool.h>
 #include <ctype.h>
 #include "error.h"
 
-#define UNUSED __attribute((unused))
-
-#define STACK_MODE 0
-#define QUEUE_MODE 1
+/**
+ * enum push_mode_enum - enumeration defines two constants representing
+ * push modes for a Monty interpreter program. These modes determine
+ * whether elements should be pushed onto a stack or a queue.
+ *
+ * @STACK_MODE: (Value: 0): Represents the stack mode, where elements are
+ * pushed onto the stack. In stack mode, the last element pushed is the
+ * first to be popped (Last In, First Out - LIFO).
+ *
+ * @QUEUE_MODE: (Value: 1): Represents the queue mode, where elements
+ * are pushed into the queue. In queue mode, the first element pushed
+ * is the first to be dequeued (First In, First Out - FIFO).
+ */
+typedef enum push_mode_enum
+{
+	STACK_MODE,
+	QUEUE_MODE
+} push_mode;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -68,7 +79,7 @@ typedef struct opcode_info_s
  * @file: pointer to a FILE struct (representing the Monty bytecode file)
  * @buffer: pointer to a character buffer for reading file contents
  * @stack_head: pointer to the head of a stack (doubly linked list)
- * @push_mode: integer flag indicating push mode
+ * @mode: integer flag indicating push mode
  * (e.g., 0 for stack, 1 for queue)
  *
  * Description: Structure for storing data related to
@@ -82,20 +93,20 @@ typedef struct program_data_s
 	FILE *file;
 	char *buffer;
 	stack_t *stack_head;
-	int push_mode;
+	push_mode mode;
 } program_data_t;
 
 extern program_data_t *data;
 
 /* file_interpreter.c */
-void interpret_file(const FILE *file);
+void interpret_file(FILE *file);
 
 /* execute_opcode.c */
 void execute_opcode(opcode_info_t *info);
 
 /*utils.c*/
-bool is_integer(char *str);
-stack_t *create_double_linked_list_node(int n);
+bool is_integer(const char *str);
+stack_t *create_stack_t_node(int n);
 
 /* opcode_operations_1.c */
 void push(stack_t **stack, unsigned int line_number);
@@ -122,10 +133,10 @@ void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 
 /* free.c */
-void free_stack(stack_t *head);
+void free_stack_t(stack_t *head);
 void free_program_data(program_data_t *data);
 
 /* _exit_prog.c */
 void _exit_prog(int code);
 
-#endif /* _MONTY_H_ */
+#endif /* MONTY_H */

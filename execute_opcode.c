@@ -45,7 +45,7 @@ void execute_opcode(opcode_info_t *info)
 	if (info == NULL || data == NULL)
 		_exit_prog(EXIT_FAILURE);
 
-	if (info->code && info->code[0] == '#')
+	if (strncmp(info->code, "#", 1) == 0)
 		return;
 
 	for (i = 0; instructions[i].opcode; i++)
@@ -58,7 +58,7 @@ void execute_opcode(opcode_info_t *info)
 		}
 	}
 
-	print_error(EUNKOWN_INSTRUCTION, info->code, info->line);
+	print_error(E_UNKOWN_INSTRUCTION, info->code, info->line);
 	_exit_prog(EXIT_FAILURE);
 }
 
@@ -80,7 +80,7 @@ void stack(stack_t **stack, unsigned int line_number)
 	if (data == NULL)
 		_exit_prog(EXIT_FAILURE);
 
-	data->push_mode = STACK_MODE;
+	data->mode = STACK_MODE;
 }
 
 /**
@@ -101,5 +101,5 @@ void queue(stack_t **stack, unsigned int line_number)
 	if (data == NULL)
 		_exit_prog(EXIT_FAILURE);
 
-	data->push_mode = QUEUE_MODE;
+	data->mode = QUEUE_MODE;
 }

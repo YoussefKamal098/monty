@@ -12,12 +12,12 @@ program_data_t *data = NULL;
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	char *file_path;
+	const char *file_path;
 	program_data_t program_data = {NULL, NULL, NULL, NULL, STACK_MODE};
 
 	if (argc != 2)
 	{
-		print_error(EMONTY_FILE);
+		print_error(E_MONTY_FILE);
 		exit(EXIT_FAILURE);
 	}
 
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 
 	if (file == NULL)
 	{
-		print_error(EOPEN_FILE, file_path);
+		print_error(E_OPEN_FILE, file_path);
 		exit(EXIT_FAILURE);
 	}
 
