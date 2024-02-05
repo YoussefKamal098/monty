@@ -1,13 +1,13 @@
-#ifndef ERROR_H
-#define ERROR_H
+#ifndef ERROR_H_
+#define ERROR_H_
 
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
 
 /**
- * enum error_enum - Enumeration defines a set of error codes commonly used in
- * the context of a Monty interpreter program. Each code represents a
+ * enum ERROR_CODE_ENUM - Enumeration defines a set of error codes commonly
+ * used in the context of a Monty interpreter program. Each code represents a
  * specific error condition that may occur during the execution of the program.
  *
  * @E_MONTY_FILE: (Value: 300): Indicates an error related to the Monty
@@ -40,7 +40,7 @@
  * outside the valid range, indicating an overflow or underflow condition.
  */
 
-typedef enum error_enum
+typedef enum ERROR_CODE_ENUM
 {
 	E_MONTY_FILE = 300,
 	E_OPEN_FILE,
@@ -51,7 +51,7 @@ typedef enum error_enum
 	E_STACK_TOO_SHORT,
 	E_ZERO_DIVISION,
 	E_RANGE
-} error;
+} ERROR_CODE;
 
 /**
  * struct error_handler_s - error handler for error messages
@@ -60,12 +60,12 @@ typedef enum error_enum
  */
 typedef struct error_handler_s
 {
-	error code;
+	ERROR_CODE code;
 	int (*handler)(va_list args);
 } error_handler_t;
 
 /* print_error.c */
-void print_error(error code, ...);
+void print_error(ERROR_CODE code, ...);
 
 /* errors_1.c */
 int print_monty_file_error(va_list args);

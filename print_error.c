@@ -10,7 +10,7 @@
  * code with the corresponding error handling function. The variable arguments
  * depend on the specific error code and are passed accordingly.
  */
-void print_error(error code, ...)
+void print_error(ERROR_CODE code, ...)
 {
 	static error_handler_t error_handler[] = {
 	    {E_MONTY_FILE, print_monty_file_error},
@@ -41,4 +41,7 @@ void print_error(error code, ...)
 			break;
 		}
 	}
+
+	if (error_handler[i].handler == NULL)
+		fprintf(stderr, "Unknown error code: %d\n", code);
 }

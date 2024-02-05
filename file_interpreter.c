@@ -40,7 +40,7 @@ void interpret_file(FILE *file)
 		opcode_info.line++;
 	}
 
-	free_program_data(data);
+	free_program_data_t(data);
 }
 
 /**

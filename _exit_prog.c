@@ -12,6 +12,6 @@
 void _exit_prog(int code)
 {
 	if (data)
-		free_program_data(data);
+		free_program_data_t(data);
 	exit(code);
 }

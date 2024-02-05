@@ -25,14 +25,14 @@ void free_stack_t(stack_t *head)
 }
 
 /**
- * free_program_data - Free memory allocated for Monty program data
+ * free_program_data_t - Free memory allocated for Monty program data
  * @data: Pointer to a program_data_t struct containing program-specific data
  *
  * This function is responsible for freeing the memory allocated for Monty
  * program data. It takes a pointer to a program_data_t struct as a parameter
  * and releases resources associated with the stack, buffer, and file.
  */
-void free_program_data(program_data_t *data)
+void free_program_data_t(program_data_t *data)
 {
 	if (data == NULL)
 		return;

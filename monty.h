@@ -1,5 +1,5 @@
-#ifndef MONTY_H
-#define MONTY_H
+#ifndef MONTY_H_
+#define MONTY_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,7 +9,7 @@
 #include "error.h"
 
 /**
- * enum push_mode_enum - enumeration defines two constants representing
+ * enum PUSH_MOD_ENUM - enumeration defines two constants representing
  * push modes for a Monty interpreter program. These modes determine
  * whether elements should be pushed onto a stack or a queue.
  *
@@ -21,11 +21,11 @@
  * are pushed into the queue. In queue mode, the first element pushed
  * is the first to be dequeued (First In, First Out - FIFO).
  */
-typedef enum push_mode_enum
+typedef enum PUSH_MOD_ENUM
 {
 	STACK_MODE,
 	QUEUE_MODE
-} push_mode;
+} PUSH_MODE;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -93,7 +93,7 @@ typedef struct program_data_s
 	FILE *file;
 	char *buffer;
 	stack_t *stack_head;
-	push_mode mode;
+	PUSH_MODE mode;
 } program_data_t;
 
 extern program_data_t *data;
@@ -134,9 +134,9 @@ void rotr(stack_t **stack, unsigned int line_number);
 
 /* free.c */
 void free_stack_t(stack_t *head);
-void free_program_data(program_data_t *data);
+void free_program_data_t(program_data_t *data);
 
 /* _exit_prog.c */
 void _exit_prog(int code);
 
-#endif /* MONTY_H */
+#endif /* MONTY_H_ */
